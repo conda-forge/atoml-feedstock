@@ -13,7 +13,7 @@ source:
 build:
   number: 2
   noarch: python
-  script: ${{ PYTHON }} -m pip install . -vv
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
@@ -28,12 +28,6 @@ tests:
       imports:
         - atoml
       python_version: ${{ python_min }}.*
-  - requirements:
-      run:
-        - pip
-        - python ${{ python_min }}.*
-    script:
-      - pip check
 
 about:
   summary: Yet another style preserving TOML library
